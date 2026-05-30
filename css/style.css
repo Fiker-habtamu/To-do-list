@@ -1,0 +1,24 @@
+:root{
+	--primary-color:#001a2c;
+	--secondary-color:#003356;
+	--accent-color:#257ce6;
+}
+body{
+	background-color: var(--primary-color);
+	color: var(--accent-color);
+}
+
+.list-container{
+	border-right: 3px var(--secondary-color) solid;
+	padding-bottom: 10px;
+}
+.list_title{
+	border-bottom: 2px var(--accent-color) solid;
+}
+.lists{
+	width: fit-content;
+	border-bottom: 1px var(--secondary-color) solid;
+	color: var(--accent-color);
+	margin-bottom: 20%;
+	padding-bottom: 5%;
+}
