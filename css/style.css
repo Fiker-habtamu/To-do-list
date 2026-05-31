@@ -22,3 +22,12 @@ body{
 	margin-bottom: 20%;
 	padding-bottom: 5%;
 }
+.each-task{
+	width: fit-content;
+	display: flex;
+	justify-content: space-between;
+	margin: 20px;
+}
+.each-task p{
+	margin-left: 10px;
+}
