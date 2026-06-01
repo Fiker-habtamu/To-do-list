@@ -11,9 +11,8 @@ let list_name_t = $("#list_name_t")
 let listItems = $(".listItems");
 let ft_list = $(".ft_list");
 let each = $(".lists");
-// let list_task = $(".ft_list").children("h3")
 let push_to_task = $("#push_to_task");
-// console.log(list_task)
+let task = $(".tasks")
 
 let lists = [
   {
@@ -78,4 +77,21 @@ push_add_list_btn.on("click", () => {
 push_to_task.on("click", () => {
   console.log(list_task);
 });
+listItems.on("click",".lists",function(){
+	let clicked = $(this).text();
+	let click = lists.find(l => l.name === clicked)
+	// let eachTask = click.task.map(et => et.tname)
+	// console.log(eachTask)
+	task.html(" ")
+	click.task.forEach((eachTask) =>{
+		task.append(
+    `<div class="each-task">
+					<input type="checkbox" name="" id="">
+					<p>${eachTask.tname}</p>
+				</div>`,
+  );
+	}
+	)
+
+})
 
