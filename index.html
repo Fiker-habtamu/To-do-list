@@ -52,23 +52,28 @@
 			<!-- Add task btn -->
 			<div class="flex justify-between font-bold px-5">
 				<h1 class="text-3xl  border-b">All</h1>
-				<button class="Add_listBtn ml-3 text-xs" id="add_task">
-					<div>+</div>
+				<button class="Add_listBtn ml-3 text-xs cursor-pointer" id="add_task">
+					<div>+</div> 
 					<p class="font-light">Add</p>
 				</button>
 			</div>
 			<!-- hidden add task div -->
-			<div class="task_taker w-fit h-32 absolute top-16 right-8 bg-[#257ce6]">
+			<div class="task_taker hidden w-fit h-fit absolute top-16 right-8 bg-[#257ce6] ">
 				<!-- input -->
 				<div class="flex justify-between mb-5">
-					<input class="bg-cyan-900" type="text" id="list_name">
+					<input class="bg-cyan-900" type="text" id="list_name_t">
 					<p class="text-[#003356] font-bold">: insert list name</p>
 				</div>
+				<!-- lists of lists -->
+				 <div class="m-5">
+					<p class="text-base text-[#003356] mb-2">In which list: </p>
+					<div class="ft_list grid grid-cols-4 gap-2">
+					</div>
+				 </div>
 				<!-- btns -->
-				<div class="flex justify-center ">
+				<div class="flex align-baseline justify-center ">
 					<div  class="flex justify-between w-1/2">
-						<button type="button" id="cancel_btn">Cancel</button>
-						<button type="button">Add</button>
+						<button type="button" id="cancel_task_btn">Cancel</button>
 					</div>
 				</div>
 			</div>

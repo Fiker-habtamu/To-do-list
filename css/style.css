@@ -34,7 +34,6 @@ body{
 .task_taker{
 	padding: 10px;
 	border-radius: 10px;
-
 }
 .list_name_taker input{
 	background-color: var(--secondary-color);
@@ -63,6 +62,14 @@ body{
 	font: bold;
 	cursor: pointer;
 }
+.task_taker button{
+	background-color: var(--secondary-color);
+	color: #257ce6;
+	padding: 5%;
+	border-radius: 10px;
+	font: bold;
+	cursor: pointer;
+}
 .each-task{
 	width: fit-content;
 	display: flex;
@@ -71,6 +78,13 @@ body{
 }
 .each-task p{
 	margin-left: 10px;
+}
+.list_task{
+	width:100%;
+	height: fit-content;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: var(--primary-color);
 }
 @media(min-width:600px){
 	.lists{
