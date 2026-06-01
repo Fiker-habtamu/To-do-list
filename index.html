@@ -49,13 +49,30 @@
 		</section>
 		<!-- task container -->
 		<section class="task-container w-3/4 sm:w-3/4">
+			<!-- Add task btn -->
 			<div class="flex justify-between font-bold px-5">
 				<h1 class="text-3xl  border-b">All</h1>
-				<button class="Add_listBtn ml-3 text-xs">
+				<button class="Add_listBtn ml-3 text-xs" id="add_task">
 					<div>+</div>
 					<p class="font-light">Add</p>
 				</button>
 			</div>
+			<!-- hidden add task div -->
+			<div class="task_taker w-fit h-32 absolute top-16 right-8 bg-[#257ce6]">
+				<!-- input -->
+				<div class="flex justify-between mb-5">
+					<input class="bg-cyan-900" type="text" id="list_name">
+					<p class="text-[#003356] font-bold">: insert list name</p>
+				</div>
+				<!-- btns -->
+				<div class="flex justify-center ">
+					<div  class="flex justify-between w-1/2">
+						<button type="button" id="cancel_btn">Cancel</button>
+						<button type="button">Add</button>
+					</div>
+				</div>
+			</div>
+			<!-- each task -->
 			<div class="tasks">
 				<div class="each-task">
 					<input type="checkbox" name="" id="">

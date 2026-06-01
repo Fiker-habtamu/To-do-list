@@ -21,6 +21,7 @@ body{
 	color: var(--accent-color);
 	margin-bottom: 20%;
 	padding-bottom: 5%;
+	cursor: pointer;
 }
 #add_list{
 	cursor: pointer;
@@ -30,7 +31,18 @@ body{
 	border-radius: 10px;
 	/* visibility: hidden; */
 }
+.task_taker{
+	padding: 10px;
+	border-radius: 10px;
+
+}
 .list_name_taker input{
+	background-color: var(--secondary-color);
+	color: var(--accent-color);
+	padding: 5px;
+	border-radius: 10px;
+}
+.task_taker input{
 	background-color: var(--secondary-color);
 	color: var(--accent-color);
 	padding: 5px;
@@ -38,6 +50,10 @@ body{
 }
 .list_name_taker input:focus{
 	outline: none;
+}
+.task_taker input:focus{
+		outline: none;
+
 }
 .list_name_taker button{
 	background-color: var(--secondary-color);
