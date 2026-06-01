@@ -22,6 +22,31 @@ body{
 	margin-bottom: 20%;
 	padding-bottom: 5%;
 }
+#add_list{
+	cursor: pointer;
+}
+.list_name_taker{
+	padding: 10px;
+	border-radius: 10px;
+	/* visibility: hidden; */
+}
+.list_name_taker input{
+	background-color: var(--secondary-color);
+	color: var(--accent-color);
+	padding: 5px;
+	border-radius: 10px;
+}
+.list_name_taker input:focus{
+	outline: none;
+}
+.list_name_taker button{
+	background-color: var(--secondary-color);
+	color: #257ce6;
+	padding: 5%;
+	border-radius: 10px;
+	font: bold;
+	cursor: pointer;
+}
 .each-task{
 	width: fit-content;
 	display: flex;
