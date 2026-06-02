@@ -90,42 +90,152 @@ push_add_list_btn.on("click", () => {
   list_name_input.val(" ");
 });
 
+// let finishedT = null;
+// let foundTask = null;
+// task.on("change", ".finished", function () {
+//   let task_p = $(this).closest(".each-task").find(".task_p");
+//   let task_name = task_p.text();
+//   lists.forEach((l,listIndex) => {
+//     let t = l.task.find((t,taskIndex) => t.tname === task_name);
+//     if (t) {
+//       foundTask = t;
+//     }
+//   });
+//   finishedT = foundTask.finished;
+//   if ($(this).prop("checked")) {
+//     foundTask = true
+//   } else {
+//     foundTask = false;
+//   }
+//   console.log(finishedT);
+
+//   if (finishedT) {
+//     task_p.addClass("line-through");
+//   } else {
+//     task_p.removeClass("line-through");
+//   }
+//   lists.forEach((l) => {
+//         l.task.forEach((t) => {
+//             console.log(`Task: ${t.tname} | Finished: ${t.finished}`);
+//         });
+//     });
+// });
+
+let finishedT = null;
+let foundTask = null;
+
+task.on("change", ".finished", function () {
+  let task_p = $(this).closest(".each-task").find(".task_p");
+  let task_name = task_p.text().trim(); // Added .trim() to prevent spacing bugs
+  
+  // 1. Find the object inside the array
+  lists.forEach((l) => {
+    let t = l.task.find((t) => t.tname === task_name);
+    if (t) {
+      foundTask = t;
+    }
+  });
+
+  if (foundTask) {
+    // 2. Update the property directly ON the found object
+    if ($(this).prop("checked")) {
+      foundTask.finished = true;
+    } else {
+      foundTask.finished = false;
+    }
+
+    // 3. Keep your global variable in sync if you need it elsewhere
+    finishedT = foundTask.finished; 
+    console.log("Updated task state to:", finishedT);
+
+    // 4. Update the UI using the freshly changed state
+    if (finishedT) {
+      task_p.addClass("line-through");
+    } else {
+      task_p.removeClass("line-through");
+    }
+  }
+
+  // 5. Print out your main list data to watch it update in real time!
+  // lists.forEach((l) => {
+  //   l.task.forEach((t) => {
+  //     console.log(`Task: ${t.tname} | Finished: ${t.finished}`);
+  //   });
+  // });
+});
+
 // to display the task when the list is clicked
+// listItems.on("click", ".lists", function () {
+//   let clicked = $(this).text();
+//   let click = lists.find((l) => l.name === clicked);
+//   task.html(" ");
+//   // if the clicked list is all it display all tasks
+//   if (clicked == "All") {
+//     console.log("all clicked");
+//     lists.forEach((eachList) => {
+//       eachList.task.forEach((eachTask) => {
+//         task.append(
+//           `<div class="each-task">
+// 					<input type="checkbox" name="" class="finished">
+// 					<p class="task_p">${eachTask.tname}</p>
+// 				</div>`,
+//         );
+//       });
+//     });
+//   } else {
+//     let t = click.task.forEach((e) => console.log(e.finished));
+//     console.log(t);
+//     click.task.forEach((eachTask) => {
+//       task.append(
+//         `<div class="each-task">
+// 					<input type="checkbox" name="" id="" class="finished">
+// 					<p class="task_p ">${eachTask.tname}</p>
+// 				</div>`,
+//       );
+//     });
+//   }
+//   ds_listN.text(clicked);
+// });
+
 listItems.on("click", ".lists", function () {
-  let clicked = $(this).text();
+  let clicked = $(this).text().trim(); // Added trim to ensure exact string matching
   let click = lists.find((l) => l.name === clicked);
   task.html(" ");
-  // if the clicked list is all it display all tasks
+
+  // If the clicked list is all, it displays all tasks
   if (clicked == "All") {
     console.log("all clicked");
     lists.forEach((eachList) => {
       eachList.task.forEach((eachTask) => {
+        // 1. Determine if attributes/classes need to be added based on the data state
+        let isChecked = eachTask.finished ? "checked" : "";
+        let hasLineThrough = eachTask.finished ? "line-through" : "";
+
+        // 2. Inject those dynamic variables directly into your string template
         task.append(
           `<div class="each-task">
-					<input type="checkbox" name="" class="finished">
-					<p class="task_p">${eachTask.tname}</p>
-				</div>`,
+            <input type="checkbox" name="" class="finished" ${isChecked}>
+            <p class="task_p ${hasLineThrough}">${eachTask.tname}</p>
+          </div>`
         );
       });
     });
   } else {
-    click.task.forEach((eachTask) => {
-      task.append(
-        `<div class="each-task">
-					<input type="checkbox" name="" id="" class="finished">
-					<p class="task_p">${eachTask.tname}</p>
-				</div>`,
-      );
-    });
+    if (click) { // Added a quick check to make sure the list object was successfully found
+      click.task.forEach((eachTask) => {
+        // 1. Determine state for the individual selected list
+        let isChecked = eachTask.finished ? "checked" : "";
+        let hasLineThrough = eachTask.finished ? "line-through" : "";
+
+        // 2. Render with state intact
+        task.append(
+          `<div class="each-task">
+            <input type="checkbox" name="" id="" class="finished" ${isChecked}>
+            <p class="task_p ${hasLineThrough}">${eachTask.tname}</p>
+          </div>`
+        );
+      });
+    }
   }
   ds_listN.text(clicked);
-});
-
-task.on("change",".finished", function () {
-  let task_p = $(this).closest(".each-task").find(".task_p");
-  if ($(this).prop("checked")) {
-    task_p.addClass("line-through");
-  } else {
-    task_p.removeClass("line-through");
-  }
 });
