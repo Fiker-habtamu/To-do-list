@@ -7,7 +7,28 @@ body{
 	background-color: var(--primary-color);
 	color: var(--accent-color);
 }
+.delete-list-btn,
+.delete-task-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e24b4a;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  padding: 0 4px;
+}
 
+.list-row:hover .delete-list-btn,
+.each-task:hover .delete-task-btn {
+  opacity: 1;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .list-container{
 	border-right: 3px var(--secondary-color) solid;
 	padding-bottom: 10px;
